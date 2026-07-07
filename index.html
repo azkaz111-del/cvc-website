@@ -92,6 +92,8 @@ nav.on-hero:not(.scrolled) .logo-img{filter:brightness(0) invert(1)}
 /* ============ HERO ============ */
 #hero{position:relative;height:100svh;min-height:640px;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
 #hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+#hero .yt-bg{position:absolute;inset:0;overflow:hidden;opacity:.62;pointer-events:none}
+#hero .yt-bg iframe{position:absolute;top:50%;left:50%;width:max(100vw,177.78vh);height:max(100svh,56.25vw);transform:translate(-50%,-50%);border:0}
 #hero .veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,20,29,.94) 0%,rgba(14,20,29,.35) 45%,rgba(14,20,29,.55) 100%)}
 .hero-inner{position:relative;z-index:2;width:100%;padding:0 clamp(20px,4vw,56px) clamp(48px,7vh,84px);color:#F7F8FA}
 .hero-inner .eyebrow{margin-bottom:22px}
@@ -327,6 +329,7 @@ footer{background:var(--ink);color:#9AA5B5;padding:72px clamp(20px,4vw,56px) 36p
 <!-- HERO -->
 <header id="hero">
   <video autoplay muted loop playsinline src="hero.mp4"></video>
+  <div class="yt-bg" aria-hidden="true"><iframe src="https://www.youtube.com/embed/fzUJnS7-M_E?autoplay=1&mute=1&loop=1&playlist=fzUJnS7-M_E&controls=0&rel=0&playsinline=1&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0" frameborder="0" allow="autoplay; encrypted-media" title="Cardiovascular Consultants video"></iframe></div>
   <div class="veil"></div>
   <div class="hero-inner">
     <div class="eyebrow on-dark">Metro Detroit · Est. 30+ Years</div>
