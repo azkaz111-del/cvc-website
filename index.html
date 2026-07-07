@@ -63,6 +63,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:110;display:flex;align-items:cen
 nav.scrolled{background:rgba(247,248,250,.88);backdrop-filter:blur(14px);padding:14px clamp(20px,4vw,56px);box-shadow:0 1px 0 var(--slate-soft)}
 nav.hidden{transform:translateY(-110%)}
 nav.on-hero:not(.scrolled){color:#fff}
+nav.on-hero:not(.scrolled) .logo-img{filter:brightness(0) invert(1)}
 .logo{display:flex;align-items:baseline;gap:2px;font-family:var(--serif);font-weight:700;font-size:23px;letter-spacing:.01em;line-height:1}
 .logo .pc{font-size:11px;letter-spacing:.28em;font-family:var(--sans);font-weight:600;margin-left:8px;transform:translateY(-6px)}
 .logo .beat{width:52px;height:20px;margin-left:6px;transform:translateY(2px)}
@@ -295,11 +296,7 @@ footer{background:var(--ink);color:#9AA5B5;padding:72px clamp(20px,4vw,56px) 36p
 
 <!-- NAV -->
 <nav id="nav" class="on-hero">
-  <a href="#hero" class="logo" data-hover>
-    Cardio<span style="color:var(--red)">V</span>ascular
-    <svg class="beat" viewBox="0 0 52 20"><path d="M0 10 h14 l4 -5 4 5 6 0 4 -9 5 16 4 -14 3 7 h8"/></svg>
-    <span class="pc">P.C.</span>
-  </a>
+  <a href="#hero" class="logo" data-hover><img src="logo.png" alt="Cardiovascular Consultants P.C." class="logo-img" style="height:40px;width:auto;transition:filter .4s"></a>
   <div class="nav-links">
     <a href="about.html" data-hover>About</a>
     <a href="team.html" data-hover>Physicians</a>
@@ -540,7 +537,7 @@ footer{background:var(--ink);color:#9AA5B5;padding:72px clamp(20px,4vw,56px) 36p
 <footer>
   <div class="foot-grid">
     <div>
-      <div class="logo">Cardio<span style="color:var(--red)">V</span>ascular<span class="pc" style="color:#9AA5B5"> P.C.</span></div>
+      <img src="logo.png" alt="Cardiovascular Consultants P.C." style="height:36px;width:auto;filter:brightness(0) invert(1);opacity:.92;margin-bottom:14px">
       <p>Advanced heart and vascular healthcare that's comprehensive, compassionate and convenient — serving Metro Detroit for over 30 years.</p>
     </div>
     <div class="foot-col">
