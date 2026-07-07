@@ -138,10 +138,10 @@ body.ready .hero-foot{opacity:1;transform:none}
 .chamber-hint svg path{stroke:var(--red);stroke-width:1.8;fill:none}
 .chamber-row{display:flex;gap:8px;padding:0 clamp(12px,2vw,32px);height:min(640px,76vh)}
 .chamber{position:relative;flex:1;overflow:hidden;border-radius:4px;cursor:pointer;transition:flex 1s var(--ease);background:var(--ink-2)}
-.chamber video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;filter:saturate(.25) brightness(.85);transition:opacity .9s,filter .9s,transform 1.4s var(--ease);transform:scale(1.06)}
+.chamber video,.chamber .ch-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;filter:saturate(.25) brightness(.85);transition:opacity .9s,filter .9s,transform 1.4s var(--ease);transform:scale(1.06)}
 .chamber .shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,20,29,.92) 8%,rgba(14,20,29,.15) 60%)}
 .chamber.active{flex:3.4}
-.chamber.active video{opacity:.85;filter:saturate(1) brightness(1);transform:scale(1)}
+.chamber.active video,.chamber.active .ch-img{opacity:.85;filter:saturate(1) brightness(1);transform:scale(1)}
 .ch-num{position:absolute;top:26px;left:26px;font-family:var(--serif);font-style:italic;font-size:20px;color:rgba(247,248,250,.55);z-index:3}
 .ch-body{position:absolute;left:0;right:0;bottom:0;padding:28px;z-index:3}
 .ch-title{font-family:var(--serif);font-size:clamp(24px,2.6vw,40px);font-weight:600;line-height:1.05;transition:transform .8s var(--ease)}
@@ -371,7 +371,7 @@ footer{background:var(--ink);color:#9AA5B5;padding:72px clamp(20px,4vw,56px) 36p
   </div>
   <div class="chamber-row" id="chamber-row">
     <div class="chamber active" data-hover>
-      <video muted loop playsinline preload="metadata" src="hero.mp4"></video>
+      <img class="ch-img" src="prevention.jpg" alt="CVC cardiologist examining a patient">
       <div class="shade"></div><div class="ch-bar"></div>
       <div class="ch-num">I.</div>
       <div class="ch-body">
@@ -617,7 +617,7 @@ function activate(ch){
     const on=c===ch;
     c.classList.toggle('active',on);
     const v=c.querySelector('video');
-    if(on){v.play().catch(()=>{});}else{v.pause();}
+    if(v){if(on){v.play().catch(()=>{});}else{v.pause();}}
   });
 }
 chambers.forEach(c=>{
