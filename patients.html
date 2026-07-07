@@ -104,20 +104,39 @@ footer{background:var(--ink);color:#9AA5B5;padding:52px clamp(20px,4vw,56px) 28p
       (function(){
         const D=[{"n": "Acute Coronary Syndromes", "d": "An umbrella term for emergencies where blood flow to the heart muscle suddenly drops \u2014 including heart attack and unstable angina. Chest pressure, pain spreading to the arm or jaw, and shortness of breath are warning signs. Call 911 immediately if these occur."}, {"n": "Aortic Aneurysm", "d": "A balloon-like bulge in the aorta, the body's largest artery. Aneurysms often cause no symptoms and are found on imaging. Our team monitors their size over time and intervenes before rupture becomes a risk."}, {"n": "Atrial Fibrillation", "d": "An irregular, often rapid heart rhythm that can feel like fluttering, racing, or fatigue. AFib significantly raises stroke risk, which is why treatment often includes blood thinners, rhythm medications, or procedures like ablation."}, {"n": "Heart Failure", "d": "A condition where the heart doesn't pump as efficiently as it should \u2014 causing fatigue, swelling in the legs, and shortness of breath. With the right medications and monitoring, most patients live full, active lives."}, {"n": "Heart Valve Disease", "d": "When one or more heart valves don't open or close properly, the heart works harder than it should. Depending on severity, we monitor with echocardiography or repair/replace the valve \u2014 including minimally invasive TAVR."}, {"n": "High Blood Pressure", "d": "Often called the 'silent killer' because it has no symptoms while quietly damaging arteries, the heart, and kidneys. It's highly controllable with lifestyle changes and medication \u2014 and controlling it is one of the most powerful things you can do for your heart."}, {"n": "High Cholesterol", "d": "Excess LDL ('bad') cholesterol builds plaque inside artery walls over time. Managed through diet, exercise, and medications like statins, lowering cholesterol dramatically reduces heart attack and stroke risk."}, {"n": "Peripheral Artery Disease", "d": "Narrowed arteries reduce blood flow to the legs \u2014 often causing cramping or pain when walking that eases with rest. PAD is also a warning sign of artery disease elsewhere, so early detection matters."}, {"n": "Stroke", "d": "Occurs when blood flow to part of the brain is blocked or a vessel bursts. Remember BE FAST: Balance, Eyes, Face drooping, Arm weakness, Speech difficulty, Time to call 911. Much of our work focuses on preventing stroke before it happens."}, {"n": "Venous Thromboembolism", "d": "Blood clots that form in deep veins (usually the legs) and can travel to the lungs. Leg swelling, warmth, or pain \u2014 or sudden shortness of breath and chest pain \u2014 need urgent evaluation."}, {"n": "Coronary Artery Disease", "d": "The most common form of heart disease: plaque narrows the arteries that feed the heart muscle. Treated with lifestyle changes, medication, and when needed, angioplasty and stenting performed by our interventional cardiologists."}, {"n": "Arrhythmia", "d": "Any abnormal heart rhythm \u2014 too fast, too slow, or irregular. Diagnosed with EKGs, Holter monitors, and loop recorders, and treated with medication, devices, or electrophysiology procedures."}, {"n": "Vascular Disease", "d": "Conditions affecting blood vessels outside the heart \u2014 including the carotid arteries in the neck and renal arteries to the kidneys. Our vascular specialists diagnose and treat the full spectrum."}];
         const pills=document.querySelectorAll('.cond-pill');
+        const wrap=document.getElementById('cond-pills');
         const box=document.getElementById('cond-info');
         const t=document.getElementById('cond-title');
         const d=document.getElementById('cond-desc');
+        const fine=matchMedia('(pointer:fine)').matches;
         function show(i,pill){
           pills.forEach(p=>p.classList.remove('active'));
           pill.classList.add('active');
           t.textContent=D[i].n; d.textContent=D[i].d;
           box.style.display='block';
         }
+        function hide(){
+          pills.forEach(p=>p.classList.remove('active'));
+          box.style.display='none';
+        }
         pills.forEach(p=>{
           const i=+p.dataset.i;
-          p.addEventListener('click',()=>show(i,p));
-          if(matchMedia('(pointer:fine)').matches) p.addEventListener('mouseenter',()=>show(i,p));
+          if(fine){
+            p.addEventListener('mouseenter',()=>show(i,p));
+          }else{
+            p.addEventListener('click',()=>{
+              if(p.classList.contains('active')){hide();}else{show(i,p);}
+            });
+          }
         });
+        if(fine){
+          // hide when the cursor leaves the pills AND the info box
+          let over=false;
+          [wrap,box].forEach(el=>{
+            el.addEventListener('mouseenter',()=>{over=true;});
+            el.addEventListener('mouseleave',()=>{over=false;setTimeout(()=>{if(!over)hide();},120);});
+          });
+        }
       })();
       </script>
     </div>
