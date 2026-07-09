@@ -1,91 +1,275 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"><style>:root{--ink:#0E141D;--ink-2:#141C28;--red:#C8102E;--red-deep:#9A0B22;--paper:#F7F8FA;--paper-2:#EEF0F4;--slate:#8C97A8;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--ease:cubic-bezier(.22,1,.36,1);}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.65;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font-family:inherit;border:none;background:none;cursor:pointer}img{display:block;max-width:100%}h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08}.eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:var(--red);display:flex;align-items:center;gap:14px}.eyebrow::before{content:"";width:34px;height:1px;background:var(--red)}nav{position:fixed;top:0;left:0;right:0;z-index:110;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(20px,4vw,56px);background:rgba(247,248,250,.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(140,151,168,.18)}.logo{display:flex;align-items:baseline;gap:2px;font-family:var(--serif);font-weight:700;font-size:21px}.logo .beat{width:44px;height:18px;margin-left:6px;transform:translateY(2px)}.logo .beat path{stroke:var(--red);stroke-width:2;fill:none}.logo .pc{font-size:10px;letter-spacing:.28em;font-family:var(--sans);font-weight:600;margin-left:6px;transform:translateY(-5px)}.nav-links{display:flex;gap:clamp(10px,1.6vw,28px);font-size:12px;font-weight:500;letter-spacing:.04em}.nav-links a{opacity:.75;transition:opacity .3s}.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--red)}.nav-call{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;font-size:12px;font-weight:600;letter-spacing:.06em;padding:10px 16px;border-radius:2px;transition:background .3s;white-space:nowrap}.nav-call:hover{background:var(--red-deep)}#menu-btn{display:none;flex-direction:column;gap:5px;padding:8px}#menu-btn span{width:24px;height:2px;background:var(--ink)}@media(max-width:1000px){.nav-links,.nav-call{display:none}#menu-btn{display:flex}}#mobile-menu{position:fixed;inset:0;z-index:105;background:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:0 32px;gap:6px;clip-path:circle(0 at calc(100% - 44px) 36px);transition:clip-path .7s var(--ease)}#mobile-menu.open{clip-path:circle(150% at calc(100% - 44px) 36px)}#mobile-menu a{font-family:var(--serif);font-size:clamp(28px,7vw,44px);color:#F7F8FA;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.08)}#mobile-menu a em{font-style:normal;color:var(--red)}.page-hero{padding:clamp(110px,16vw,170px) clamp(20px,4vw,56px) clamp(56px,7vw,90px);background:var(--ink-2);color:#F7F8FA}.page-hero h1{font-size:clamp(40px,6.5vw,88px);margin-top:16px}.page-hero h1 em{font-style:italic;color:var(--red)}.page-hero p{margin-top:18px;font-size:clamp(16px,1.4vw,19px);font-weight:300;color:#9AA5B5;max-width:54ch}.section{padding:clamp(64px,9vw,112px) clamp(20px,4vw,56px)}.section-inner{max-width:1100px;margin:0 auto}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,88px);align-items:start}@media(max-width:800px){.two-col{grid-template-columns:1fr}}.prose{font-size:15.5px;font-weight:300;color:#3C4656;line-height:1.9}.prose p{margin-bottom:16px}.prose strong{font-weight:600;color:var(--ink)}.prose ul{margin:12px 0 16px 20px}.prose ul li{margin-bottom:7px}.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;transition:transform .35s var(--ease),background .3s,color .3s}.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red-deep);transform:translateY(-2px)}.btn-dark{border:1.5px solid var(--ink);color:var(--ink)}.btn-dark:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}footer{background:var(--ink);color:#9AA5B5;padding:52px clamp(20px,4vw,56px) 28px}.foot-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.08)}@media(max-width:700px){.foot-inner{grid-template-columns:1fr}}.foot-logo{color:#F7F8FA;font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:10px}.foot-p{font-size:13px;font-weight:300;max-width:32ch}.foot-col h5{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#F7F8FA;margin-bottom:12px}.foot-col a{display:block;font-size:13px;padding:4px 0;transition:color .3s}.foot-col a:hover{color:var(--red)}.foot-base{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-top:20px;font-size:12px}.foot-base a{margin-right:16px;transition:color .3s}.foot-base a:hover{color:var(--red)}.rv{opacity:0;transform:translateY(30px);transition:opacity .85s var(--ease),transform .85s var(--ease)}.rv.in{opacity:1;transform:none}.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}</style><title>The Fit Collective — Cardiovascular Consultants P.C.</title></head><body><nav id="nav">
-  <a href="index.html" class="logo"><img src="logo.png" alt="Cardiovascular Consultants P.C." class="logo-img" style="height:50px;width:auto"></a>
-  <div class="nav-links"><a href="about.html">About</a><a href="team.html">Physicians</a><a href="services.html">Services</a><a href="patients.html">Patients</a><a href="locations.html">Locations</a><a href="news.html">News</a><a href="contact.html">Contact</a></div>
-  <a class="nav-call" href="tel:5866981200">(586) 698-1200</a>
-  <button id="menu-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>The Fitness Collective — Physician-Designed Strength Training | Cardiovascular Consultants</title><meta name="description" content="Physician-designed strength training for real life. Two evidence-informed programs by Dr. Ali Novitsky. Offered by Cardiovascular Consultants P.C.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bark:#4A3626;--bark-2:#5C4433;--clay:#A8825C;--clay-soft:#C4A480;--cream:#F5F0E4;--cream-2:#EDE5D4;--cream-3:#E3D8C3;--ink:#2E2417;--serif:'Fraunces',Georgia,serif;--sans:'Jost',system-ui,sans-serif;--ease:cubic-bezier(.22,1,.36,1);}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.7;overflow-x:hidden}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.1;letter-spacing:-.01em}
+.eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;font-weight:600;color:var(--clay);display:inline-flex;align-items:center;gap:12px}.eyebrow::before{content:"";width:30px;height:1px;background:var(--clay)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(20px,4vw,48px);background:rgba(245,240,228,.9);backdrop-filter:blur(12px);transition:box-shadow .4s}
+nav.scrolled{box-shadow:0 1px 0 rgba(74,54,38,.12)}
+nav .brand{font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:.02em;color:var(--bark)}
+nav .brand b{color:var(--clay);font-weight:600}
+nav .navlinks{display:flex;gap:clamp(16px,2.4vw,34px);font-size:12.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+nav .navlinks a{opacity:.7;transition:opacity .3s}nav .navlinks a:hover{opacity:1;color:var(--clay)}
+.cvc-link{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--clay);border:1px solid var(--clay-soft);padding:8px 14px;border-radius:100px;transition:all .3s}.cvc-link:hover{background:var(--clay);color:var(--cream);border-color:var(--clay)}
+@media(max-width:860px){nav .navlinks{display:none}}
+.hero{padding:clamp(130px,20vw,200px) 0 clamp(70px,10vw,120px);text-align:center;background:radial-gradient(ellipse at 50% 0%,var(--cream-2),var(--cream))}
+.hero img.logo{width:min(280px,60vw);margin:0 auto clamp(28px,4vw,44px)}
+.hero h1{font-size:clamp(40px,6.5vw,80px);max-width:14ch;margin:0 auto;color:var(--bark)}
+.hero h1 em{font-style:italic;color:var(--clay)}
+.hero p{margin:24px auto 0;font-size:clamp(16px,1.6vw,20px);font-weight:300;color:var(--bark-2);max-width:44ch}
+.hero .cta-row{margin-top:40px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;transition:transform .35s var(--ease),background .3s,color .3s}
+.btn-solid{background:var(--bark);color:var(--cream)}.btn-solid:hover{background:var(--clay);transform:translateY(-3px)}
+.btn-out{border:1.5px solid var(--bark);color:var(--bark)}.btn-out:hover{background:var(--bark);color:var(--cream);transform:translateY(-3px)}
+.section{padding:clamp(64px,9vw,110px) 0}
+.philo{background:var(--bark);color:var(--cream)}
+.philo .eyebrow{color:var(--clay-soft)}.philo .eyebrow::before{background:var(--clay-soft)}
+.philo h2{font-size:clamp(30px,4.4vw,60px);color:var(--cream);margin:18px 0 30px;max-width:18ch}
+.philo h2 em{font-style:italic;color:var(--clay-soft)}
+.philo p{font-weight:300;color:var(--cream-3);max-width:60ch;font-size:clamp(15px,1.5vw,18px)}
+.pillars{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.pillar{border:1px solid rgba(245,240,228,.24);border-radius:100px;padding:12px 26px;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--cream)}
+.lead{font-size:clamp(15px,1.5vw,17px);font-weight:300;color:var(--bark-2);max-width:64ch}
+.lead strong{font-weight:600;color:var(--bark)}
+.programs{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:52px}
+@media(max-width:820px){.programs{grid-template-columns:1fr}}
+.prog{background:var(--cream-2);border-radius:14px;padding:clamp(28px,3.5vw,44px);position:relative;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s}
+.prog:hover{transform:translateY(-6px);box-shadow:0 24px 60px -30px rgba(74,54,38,.5)}
+.prog.feature{background:var(--bark);color:var(--cream)}
+.prog .tag{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:var(--clay)}
+.prog.feature .tag{color:var(--clay-soft)}
+.prog h3{font-size:clamp(26px,3vw,38px);margin:12px 0 4px;color:var(--bark)}.prog.feature h3{color:var(--cream)}
+.prog .price{font-family:var(--serif);font-size:38px;font-weight:600;color:var(--clay);margin-bottom:8px}.prog.feature .price{color:var(--clay-soft)}
+.prog .desc{font-size:14.5px;font-weight:300;color:var(--bark-2);margin-bottom:22px}.prog.feature .desc{color:var(--cream-3)}
+.prog h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--bark);margin:20px 0 12px;font-family:var(--sans);font-weight:600}.prog.feature h4{color:var(--clay-soft)}
+.prog ul{list-style:none}
+.prog li{font-size:14px;font-weight:300;color:var(--bark-2);padding:7px 0 7px 24px;position:relative;border-bottom:1px solid rgba(74,54,38,.1)}
+.prog.feature li{color:var(--cream-3);border-color:rgba(245,240,228,.12)}
+.prog li::before{content:"";position:absolute;left:2px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--clay)}
+.prog.feature li::before{background:var(--clay-soft)}
+.prog .best{font-style:italic;font-family:var(--serif);font-size:15px;color:var(--bark);margin:20px 0 24px}.prog.feature .best{color:var(--cream)}
+.prog .btn{width:100%;justify-content:center}
+.prog.feature .btn-solid{background:var(--clay-soft);color:var(--bark)}.prog.feature .btn-solid:hover{background:var(--cream)}
+.physio{background:var(--cream-2)}
+.physio-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px);align-items:center}
+@media(max-width:820px){.physio-grid{grid-template-columns:1fr}}
+.physio .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.physio .chip{background:var(--cream);border:1px solid var(--cream-3);border-radius:100px;padding:10px 18px;font-size:13px;color:var(--bark-2)}
+.doc-card{background:var(--cream);border-radius:14px;padding:clamp(28px,3.5vw,40px);border-top:3px solid var(--clay)}
+.chooser{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+@media(max-width:820px){.chooser{grid-template-columns:1fr}}
+.choose-card{border:1px solid var(--cream-3);border-radius:14px;padding:clamp(26px,3vw,38px);background:var(--cream)}
+.choose-card h3{font-size:24px;color:var(--bark);margin-bottom:6px}
+.choose-card .sub{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);font-weight:600;margin-bottom:18px}
+.choose-card ul{list-style:none}
+.choose-card li{font-size:14px;font-weight:300;color:var(--bark-2);padding:8px 0 8px 26px;position:relative}
+.choose-card li::before{content:"→";position:absolute;left:0;color:var(--clay);font-weight:600}
+.disclaimer{background:var(--bark);color:var(--cream-3)}
+.disclaimer .box{max-width:70ch}
+.disclaimer h3{color:var(--cream);font-size:clamp(22px,2.6vw,32px);margin-bottom:16px}
+.disclaimer p{font-weight:300;margin-bottom:12px;font-size:15px}
+.disclaimer strong{color:var(--clay-soft);font-weight:600}
+.contact{text-align:center}
+.contact h2{font-size:clamp(30px,4vw,52px);color:var(--bark)}
+.contact .info{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.contact .info a{font-size:18px;color:var(--bark);font-weight:500;border-bottom:1px solid var(--clay);padding-bottom:2px}
+.contact .info a:hover{color:var(--clay)}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease)}.rv.in{opacity:1;transform:none}.rv-d1{transition-delay:.12s}.rv-d2{transition-delay:.24s}
+footer{background:var(--ink);color:var(--cream-3);padding:44px 0 30px;text-align:center}
+footer .fwrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+footer .back{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--clay-soft);margin-bottom:20px}
+footer .back:hover{color:var(--cream)}
+footer .fine{font-size:12px;opacity:.7;margin-top:14px}
+</style></head><body>
+
+<nav id="nav">
+  <a href="#top" class="brand">The <b>Fitness</b> Collective</a>
+  <div class="navlinks">
+    <a href="#philosophy">Philosophy</a>
+    <a href="#programs">Programs</a>
+    <a href="#physiology">The Science</a>
+    <a href="#choose">Which Program</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="index.html" class="cvc-link">← CardioVascular P.C.</a>
 </nav>
-<div id="mobile-menu">
-  <a href="index.html">Home</a><a href="about.html">About <em>Us</em></a><a href="team.html">The <em>Physicians</em></a><a href="services.html"><em>Services</em></a><a href="patients.html"><em>Patients</em></a><a href="locations.html"><em>Locations</em></a><a href="hospitals.html"><em>Hospitals</em></a><a href="news.html"><em>News</em></a><a href="contact.html"><em>Contact</em></a><a href="fitcollective.html">The Fit <em>Collective</em></a>
-</div>
-<div class="page-hero" style="background:var(--ink)">
-  <div class="eyebrow" style="color:#E7EBF1">Physician-Designed Wellness</div>
-  <h1>The Fit <em>Collective</em></h1>
-  <p>Get moving to get healthier. A strategic, physician-designed approach to building strength, protecting metabolism, and supporting long-term healthspan.</p>
-</div>
-<section class="section">
-  <div class="section-inner">
-    <div class="two-col" style="margin-bottom:72px">
-      <div class="rv">
-        <div class="eyebrow" style="margin-bottom:18px">About the Program</div>
-        <h2 style="font-size:clamp(28px,3.5vw,46px);margin-bottom:20px">Not just a workout app.<br><em style="font-style:italic;color:var(--red)">A strategic system.</em></h2>
-        <div class="prose">
-          <p>Our practice offers two evidence-informed strength training programs created by Dr. Ali Novitsky, a triple board-certified physician and Master Certified Coach. Both programs are built on the same clinically grounded philosophy.</p>
-          <p>At The FIT Collective, strength training is most effective when physical effort is paired with intentional mindset development. <strong>The Strategic Strength Approach™</strong> unites Movement, Awareness, and Behavior Change.</p>
-          <p>This is not about perfection or intensity. It is about capacity, consistency, and confidence — built over time.</p>
-        </div>
-      </div>
-      <div class="rv rv-d1">
-        <div class="eyebrow" style="margin-bottom:18px">About Dr. Ali Novitsky</div>
-        <div class="prose">
-          <p>Dr. Ali Novitsky is a triple board-certified physician (Obesity Medicine, Pediatrics, and Neonatology) and a Master Certified Coach, known for her work at the intersection of muscle preservation, metabolic health, and sustainable behavior change.</p>
-          <p>Her approach is grounded in clinical physiology, psychological safety, and real-world adherence — not fitness trends or extremes. Both programs are built with deep understanding of hormonal transitions, appetite regulation, GLP-1 physiology, stress, recovery, and burnout risk.</p>
-          <p>The result is <strong>strategic minimalism</strong>: doing less, better, and more consistently.</p>
-        </div>
-      </div>
-    </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px">
-      <div class="rv" style="background:var(--ink-2);border-radius:4px;padding:36px;color:#F7F8FA">
-        <div style="font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:14px">Program 1</div>
-        <h3 style="font-size:28px;margin-bottom:8px">Beginner Strength &amp; Mindset</h3>
-        <div style="font-size:28px;font-family:var(--serif);color:var(--red);margin-bottom:16px">$399</div>
-        <p style="font-size:14px;font-weight:300;color:#9AA5B5;margin-bottom:20px">A 52-week strategic strength system designed by a physician to stimulate muscle — not appetite — in just 10 minutes a day.</p>
-        <ul style="list-style:none;margin-bottom:24px">
-          <li style="font-size:14px;font-weight:300;color:#C4CBD6;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)">✓ 10-minute sessions, 3 days per week</li>
-          <li style="font-size:14px;font-weight:300;color:#C4CBD6;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)">✓ Minimal equipment (bodyweight, bands, dumbbells)</li>
-          <li style="font-size:14px;font-weight:300;color:#C4CBD6;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)">✓ Builds muscle &amp; protects metabolism</li>
-          <li style="font-size:14px;font-weight:300;color:#C4CBD6;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)">✓ Clear progression without decision fatigue</li>
-          <li style="font-size:14px;font-weight:300;color:#C4CBD6;padding:6px 0">✓ 52 weeks of structured programming</li>
-        </ul>
-        <p style="font-size:13px;font-weight:300;color:#9AA5B5;font-style:italic;margin-bottom:20px">Best for: rebuilding trust in your body and creating a strong foundation.</p>
-        <a href="https://www.cardiovascularconsultantspc.com" class="btn btn-red" style="width:100%;justify-content:center">Sign Up →</a>
-      </div>
-      <div class="rv rv-d1" style="background:var(--ink-2);border-radius:4px;padding:36px;color:#F7F8FA;border:1px solid var(--red)">
-        <div style="font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:14px">Program 2</div>
-        <h3 style="font-size:28px;margin-bottom:8px">Total Strength &amp; Mindset</h3>
-        <div style="font-size:28px;font-family:var(--serif);color:var(--red);margin-bottom:16px">$599</div>
-        <p style="font-size:14px;font-weight:300;color:#9AA5B5;margin-bottom:20px">A year-long total mind–body system for a comprehensive upgrade in physical strength, emotional resilience, and long-term healthspan.</p>
-        <ul style="list-style:none;margin-bottom:24px">
-          <li style="font-size:14px;font-weight:300;color:#C4CBD6;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)">✓ 10-minute sessions + optional 20 &amp; 30-min workouts</li>
-          <li style="font-size:14px;font-weight:300;color:#C4CBD6;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)">✓ Over 1,000 unique sessions — zero repeated workouts</li>
-          <li style="font-size:14px;font-weight:300;color:#C4CBD6;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)">✓ Strength, balance, mobility, nervous-system resilience</li>
-          <li style="font-size:14px;font-weight:300;color:#C4CBD6;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)">✓ Yoga, meditation, core, &amp; mindset integrated</li>
-          <li style="font-size:14px;font-weight:300;color:#C4CBD6;padding:6px 0">✓ 52 guided meditation sessions + 31 Days of FIT reset</li>
-        </ul>
-        <p style="font-size:13px;font-weight:300;color:#9AA5B5;font-style:italic;margin-bottom:20px">Best for: deepening strength, resilience, and long-term capacity.</p>
-        <a href="https://www.cardiovascularconsultantspc.com" class="btn btn-red" style="width:100%;justify-content:center">Sign Up →</a>
-      </div>
+<header class="hero" id="top">
+  <div class="wrap">
+    <img src="fitlogo.jpg" alt="The Fitness Collective" class="logo">
+    <h1>Get moving to <em>get healthier.</em></h1>
+    <p>Physician-designed strength training for real life — mini workouts and easy exercises that fit your day.</p>
+    <div class="cta-row">
+      <a href="#programs" class="btn btn-solid">Explore the Programs</a>
+      <a href="#choose" class="btn btn-out">Which is right for me?</a>
     </div>
+  </div>
+</header>
 
-    <div class="rv" style="background:var(--paper-2);border-radius:4px;padding:36px">
-      <h3 style="font-size:22px;margin-bottom:12px">About the Role of These Programs in Your Care</h3>
-      <p class="prose">Beginner Strength &amp; Mindset and Total Strength &amp; Mindset are offered as optional wellness resources. They are <strong>not medical treatment</strong>, are not insurance-reimbursable, and do not replace physician care. Please speak with your cardiologist before starting any new exercise program.</p>
+<section class="section philo" id="philosophy">
+  <div class="wrap">
+    <div class="eyebrow rv">About The Fitness Collective</div>
+    <h2 class="rv rv-d1">Not just a workout app. <em>A strategic system.</em></h2>
+    <p class="rv rv-d1">A strategic, physician-designed approach to building strength, protecting metabolism, and supporting long-term healthspan. Our practice offers two evidence-informed strength training programs created by <strong style="color:var(--cream)">Dr. Ali Novitsky</strong>, a triple board-certified physician and Master Certified Coach. Both are built on the same clinically grounded philosophy — differing only in starting point and intensity.</p>
+    <p class="rv rv-d1" style="margin-top:18px">At The Fitness Collective, strength training is most effective when physical effort is paired with intentional mindset development. The <strong style="color:var(--cream)">Strategic Strength Approach™</strong> unites:</p>
+    <div class="pillars rv rv-d1">
+      <span class="pillar">Movement</span>
+      <span class="pillar">Awareness</span>
+      <span class="pillar">Behavior Change</span>
+    </div>
+    <p class="rv rv-d1" style="margin-top:30px">This is not about perfection or intensity. It is about <strong style="color:var(--cream)">capacity, consistency, and confidence</strong> — built over time. Both programs are designed to work with your physiology and nervous system, not against them.</p>
+  </div>
+</section>
+
+<section class="section" id="programs">
+  <div class="wrap">
+    <div class="eyebrow rv">Two Paths Forward</div>
+    <h2 class="rv rv-d1" style="font-size:clamp(30px,4.2vw,56px);color:var(--bark);margin-top:16px;max-width:16ch">Choose the starting point that <em style="font-style:italic;color:var(--clay)">meets you where you are.</em></h2>
+    <div class="programs">
+      <div class="prog rv">
+        <div class="tag">Beginner</div>
+        <h3>Beginner Strength &amp; Mindset</h3>
+        <div class="price">$399</div>
+        <div class="desc">A 52-week strategic strength system designed by a physician to stimulate muscle — not appetite — in just 10 minutes a day. Strength training designed for real life.</div>
+        <h4>Program Structure</h4>
+        <ul>
+          <li>10-minute sessions</li>
+          <li>3 days per week</li>
+          <li>Minimal equipment — bodyweight, bands, or dumbbells</li>
+          <li>Clear progression without decision fatigue</li>
+        </ul>
+        <h4 style="margin-top:22px">Built To</h4>
+        <ul>
+          <li>Build muscle</li>
+          <li>Protect metabolism</li>
+          <li>Support long-term consistency</li>
+        </ul>
+        <p class="best">➤ Best for rebuilding trust in your body and creating a strong foundation.</p>
+        <a href="#contact" class="btn btn-solid">Sign Up</a>
+      </div>
+      <div class="prog feature rv rv-d1">
+        <div class="tag">Comprehensive</div>
+        <h3>Total Strength &amp; Mindset</h3>
+        <div class="price">$599</div>
+        <div class="desc">A year-long total mind–body system for a comprehensive upgrade in physical strength, emotional resilience, and long-term healthspan — built layer by layer, week by week.</div>
+        <h4>Program Structure</h4>
+        <ul>
+          <li>10-minute sessions, 3 days per week</li>
+          <li>Optional 20- and 30-minute workouts</li>
+          <li>Zero repeated workouts across the year</li>
+          <li>Progressive programming across multiple modalities</li>
+        </ul>
+        <h4 style="margin-top:22px">Included Modalities</h4>
+        <ul>
+          <li>Progressive strength — three levels</li>
+          <li>Hardcore &amp; Floor — advanced core, pelvic-floor-safe</li>
+          <li>Core &amp; Floor Foundations</li>
+          <li>Yoga Flow Series</li>
+          <li>Guided meditations — 52 sessions</li>
+          <li>31 Days of FIT structured reset</li>
+        </ul>
+        <p class="best">➤ Best for deepening strength, resilience, and long-term capacity. Over 1,000 unique sessions.</p>
+        <a href="#contact" class="btn btn-solid">Sign Up</a>
+      </div>
     </div>
   </div>
 </section>
-<footer>
-  <div class="foot-inner">
-    <div><img src="logo.png" alt="Cardiovascular Consultants P.C." style="height:36px;width:auto;filter:brightness(0) invert(1);opacity:.92;margin-bottom:14px"><p class="foot-p">Advanced heart and vascular healthcare — comprehensive, compassionate, and convenient.</p></div>
-    <div class="foot-col"><h5>Practice</h5><a href="about.html">About Us</a><a href="team.html">Physicians</a><a href="services.html">Services</a><a href="hospitals.html">Hospitals</a><a href="news.html">News</a></div>
-    <div class="foot-col"><h5>Patients</h5><a href="patients.html">Patient Info</a><a href="https://billpay.fmhnotify.com/cardiovascularconsultantspc">Pay Your Bill</a><a href="contact.html">Contact Us</a><a href="tel:5866981200">(586) 698-1200</a></div>
+
+<section class="section physio" id="physiology">
+  <div class="wrap physio-grid">
+    <div class="rv">
+      <div class="eyebrow">A Program Designed for Real Physiology</div>
+      <h2 style="font-size:clamp(28px,3.6vw,46px);color:var(--bark);margin:16px 0 20px">Strategic minimalism: <em style="font-style:italic;color:var(--clay)">doing less, better.</em></h2>
+      <p class="lead">Both programs are built with a deep understanding of how the body actually works — so effort translates into lasting results without triggering fatigue, hunger, or burnout.</p>
+      <div class="chips">
+        <span class="chip">Hormonal transitions, incl. perimenopause</span>
+        <span class="chip">Appetite regulation &amp; metabolic health</span>
+        <span class="chip">GLP-1 physiology</span>
+        <span class="chip">Stress, recovery &amp; burnout risk</span>
+        <span class="chip">Psychological barriers to consistency</span>
+      </div>
+    </div>
+    <div class="doc-card rv rv-d1">
+      <div class="eyebrow">About Dr. Ali Novitsky</div>
+      <h3 style="font-size:26px;color:var(--bark);margin:14px 0 12px">Why we brought her program in-house</h3>
+      <p style="font-size:14.5px;font-weight:300;color:var(--bark-2);margin-bottom:14px">Dr. Ali Novitsky is a triple board-certified physician (Obesity Medicine, Pediatrics, and Neonatology) and a Master Certified Coach, known for her work at the intersection of muscle preservation, metabolic health, and sustainable behavior change.</p>
+      <p style="font-size:14.5px;font-weight:300;color:var(--bark-2)">Her approach is grounded in clinical physiology, psychological safety, and real-world adherence — not fitness trends or extremes. She created these programs to solve a problem clinicians see every day: patients are told to "strength train," but rarely given a system that works with their physiology, schedule, and emotional capacity.</p>
+    </div>
   </div>
-  <div class="foot-base"><div><a href="https://www.cardiovascularconsultantspc.com/privacy-policy/">Privacy Policy</a><a href="https://www.cardiovascularconsultantspc.com/disclaimer/">Disclaimer</a></div><div>© 2026 Cardiovascular Consultants P.C.</div></div>
+</section>
+
+<section class="section" id="choose">
+  <div class="wrap">
+    <div class="eyebrow rv">Which Program Is Right for You?</div>
+    <h2 class="rv rv-d1" style="font-size:clamp(28px,3.8vw,50px);color:var(--bark);margin-top:16px;max-width:20ch">Start with capacity — <em style="font-style:italic;color:var(--clay)">not motivation.</em></h2>
+    <p class="lead rv rv-d1" style="margin-top:18px">Ask yourself honestly: do I want the simplest possible system to rebuild consistency — or am I ready for a fully immersive strength experience? <strong>There is no wrong answer. The right program is the one you'll actually follow.</strong></p>
+    <div class="chooser">
+      <div class="choose-card rv">
+        <h3>Beginner Strength &amp; Mindset</h3>
+        <div class="sub">Choose this if most feel true</div>
+        <ul>
+          <li>I want the least amount of mental effort</li>
+          <li>I'm rebuilding consistency after time off, illness, stress, or burnout</li>
+          <li>I'm navigating appetite changes, weight loss, GLP-1s, or hormonal shifts</li>
+          <li>I want strength without triggering fatigue or hunger</li>
+          <li>I prefer a clear, minimal structure</li>
+          <li>I want to feel better quickly and steadily</li>
+        </ul>
+        <a href="#contact" class="btn btn-out" style="margin-top:22px;width:100%;justify-content:center">Sign Up</a>
+      </div>
+      <div class="choose-card rv rv-d1">
+        <h3>Total Strength &amp; Mindset</h3>
+        <div class="sub">Choose this if most feel true</div>
+        <ul>
+          <li>I enjoy variety and depth</li>
+          <li>I want a fully immersive, all-in-one system</li>
+          <li>I'm ready for strength, core, mobility, yoga, and mindset in one place</li>
+          <li>I like having options — 10, 20, or 30 minutes</li>
+          <li>I want a year-long experience with no repeated workouts</li>
+          <li>I'm seeking a total mind–body upgrade</li>
+        </ul>
+        <a href="#contact" class="btn btn-out" style="margin-top:22px;width:100%;justify-content:center">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section disclaimer">
+  <div class="wrap">
+    <div class="box rv">
+      <div class="eyebrow" style="color:var(--clay-soft)">About the Role of These Programs in Your Care</div>
+      <h3 style="margin-top:16px">A path to strength alongside your medical care</h3>
+      <p>Beginner Strength &amp; Mindset and Total Strength &amp; Mindset are offered as <strong>optional wellness resources</strong>. They exist to provide a clear, physician-designed path to strength alongside ongoing medical care.</p>
+      <p>They are <strong>not medical treatment</strong>. They are <strong>not insurance-reimbursable</strong>. They <strong>do not replace physician care</strong>.</p>
+      <p>Please speak with your cardiologist before beginning any new exercise program.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow rv" style="justify-content:center">Get Started</div>
+    <h2 class="rv rv-d1" style="margin-top:16px">Ready to begin your <em style="font-style:italic;color:var(--clay)">strength journey?</em></h2>
+    <div class="info rv rv-d1">
+      <a href="tel:5866981205">586-698-1205</a>
+      <a href="mailto:azito@cvcpc.com">azito@cvcpc.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fwrap">
+    <a href="index.html" class="back">← Return to Cardiovascular Consultants P.C.</a>
+    <div class="fine">The Fitness Collective is a wellness program of Cardiovascular Consultants P.C.<br>© 2026 Cardiovascular Consultants P.C. · Programs by Dr. Ali Novitsky</div>
+  </div>
 </footer>
-<div style="background:#1B2534;color:#9AA5B5;font-size:12px;text-align:center;padding:10px"><b style="color:#C8102E">If you are experiencing a medical emergency, call 911.</b></div>
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.13});
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-const menu=document.getElementById('mobile-menu');
-document.getElementById('menu-btn').addEventListener('click',()=>menu.classList.toggle('open'));
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
-</script></body></html>
+</script>
+</body></html>
