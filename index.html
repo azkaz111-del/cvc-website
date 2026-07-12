@@ -651,11 +651,11 @@ document.addEventListener('scroll',()=>{
 /* ---- Mobile menu ---- */
 const menu=document.getElementById('mobile-menu');
 const menuBtn=document.getElementById('menu-btn');
-menuBtn.addEventListener('click',()=>{
-  const open=menu.classList.toggle('open');
-  menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu');
-});
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+function openMenu(){menu.classList.add('open');document.body.style.overflow='hidden';menuBtn.setAttribute('aria-expanded','true');menuBtn.setAttribute('aria-label','Close menu');}
+function closeMenu(){menu.classList.remove('open');document.body.style.overflow='';menuBtn.setAttribute('aria-expanded','false');menuBtn.setAttribute('aria-label','Open menu');}
+menuBtn.addEventListener('click',openMenu);
+const mmClose=menu.querySelector('.mm-close');if(mmClose)mmClose.addEventListener('click',closeMenu);
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 
 /* ---- Chambers explorer ---- */
 const chambers=[...document.querySelectorAll('.chamber')];
