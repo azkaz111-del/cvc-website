@@ -54,16 +54,16 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.04;letter-spacin
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 /* ============ LIFELINE (scroll progress EKG) ============ */
-#lifeline{position:fixed;top:37px;left:0;width:100%;height:26px;z-index:120;pointer-events:none}
-#lifeline svg{width:100%;height:26px}
+#lifeline{position:relative;height:0;overflow:visible;z-index:3;pointer-events:none}
+#lifeline svg{position:absolute;top:0;left:0;width:100%;height:26px}
 #lifeline .trace{stroke:var(--red);stroke-width:2;fill:none;filter:drop-shadow(0 0 5px rgba(200,16,46,.55))}
 
 /* ============ NAV ============ */
-nav{position:fixed;top:37px;left:0;right:0;z-index:110;display:flex;align-items:center;justify-content:space-between;padding:22px clamp(20px,4vw,56px);transition:transform .5s var(--ease),background .4s,padding .4s,box-shadow .4s}
-nav.scrolled{background:rgba(247,248,250,.88);backdrop-filter:blur(14px);padding:14px clamp(20px,4vw,56px);box-shadow:0 1px 0 var(--slate-soft)}
-nav.hidden{transform:translateY(-110%)}
-nav.on-hero:not(.scrolled){color:#fff}
-nav.on-hero:not(.scrolled) .logo-img{filter:brightness(0) invert(1)}
+#nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:22px clamp(20px,4vw,56px);transition:transform .5s var(--ease),background .4s,padding .4s,box-shadow .4s}
+#nav.scrolled{background:rgba(247,248,250,.88);backdrop-filter:blur(14px);padding:14px clamp(20px,4vw,56px);box-shadow:0 1px 0 var(--slate-soft)}
+#site-head.hidden{transform:translateY(-100%)}
+#nav.on-hero:not(.scrolled){color:#fff}
+#nav.on-hero:not(.scrolled) .logo-img{filter:brightness(0) invert(1)}
 .logo{display:flex;align-items:baseline;gap:2px;font-family:var(--serif);font-weight:700;font-size:23px;letter-spacing:.01em;line-height:1}
 .logo .pc{font-size:11px;letter-spacing:.28em;font-family:var(--sans);font-weight:600;margin-left:8px;transform:translateY(-6px)}
 .logo .beat{width:52px;height:20px;margin-left:6px;transform:translateY(2px)}
@@ -77,7 +77,7 @@ nav.on-hero:not(.scrolled) .logo-img{filter:brightness(0) invert(1)}
 .nav-call:hover{background:var(--red-deep);transform:translateY(-2px)}
 .nav-call .dot{width:7px;height:7px;border-radius:50%;background:#fff;animation:blink 1.6s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-#menu-btn{display:none;flex-direction:column;gap:6px;padding:10px}
+#menu-btn{display:none;flex-direction:column;gap:6px;padding:10px;color:inherit}
 #menu-btn span{width:28px;height:2.5px;background:currentColor;transition:.35s var(--ease)}
 @media(max-width:920px){
   .nav-links,.nav-call{display:none}
@@ -270,7 +270,7 @@ footer{background:var(--ink);color:#9AA5B5;padding:72px clamp(20px,4vw,56px) 36p
 
 /* ============ REDUCED MOTION ============ */
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
   html{scroll-behavior:auto}
   .marq-track{animation:none}
 }
@@ -286,19 +286,48 @@ footer{background:var(--ink);color:#9AA5B5;padding:72px clamp(20px,4vw,56px) 36p
 #mobile-menu .mm-links a{font-family:var(--sans);font-size:22px;font-weight:500;color:#F7F8FA;padding:20px 4px;border-bottom:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:space-between}
 #mobile-menu .mm-links a::after{content:"›";color:var(--red);font-size:26px;font-weight:400}
 #mobile-menu .mm-links a.mm-fit{color:#C8102E}
-.soc-link:hover{background:var(--red);border-color:var(--red)!important;color:#fff;transform:translateY(-2px)}</style>
+.soc-link:hover{background:var(--red);border-color:var(--red)!important;color:#fff;transform:translateY(-2px)}
+/* ===== Mobile architecture & polish (Aug 2026 mobile audit) ===== */
+#site-head{position:fixed;top:0;left:0;right:0;z-index:120;transition:transform .4s var(--ease)}
+#site-head.hidden{transform:translateY(-100%)}
+#topbar{background:#0E141D;color:#E7EBF1;font-family:var(--sans);display:flex;align-items:center;justify-content:center;gap:6px 28px;flex-wrap:wrap;padding:8px 20px;padding-top:max(8px,env(safe-area-inset-top));font-size:13.5px;letter-spacing:.01em;border-bottom:1px solid rgba(255,255,255,.08)}
+#topbar a{display:inline-flex;align-items:center;gap:7px;color:#E7EBF1;white-space:nowrap;min-height:26px}
+#topbar a b{color:#fff;font-weight:600}
+#topbar .tb-num{color:#C4CBD6}
+#topbar .tb-compact{display:none}
+@media(max-width:900px){#topbar{gap:4px 16px;font-size:12.5px}}
+@media(max-width:640px){#topbar{gap:2px 12px;padding:5px 10px;font-size:12px}#topbar a{min-height:28px}}
+@media(max-width:460px){#topbar{flex-direction:column;align-items:stretch;gap:0;padding:3px 10px}#topbar .tb-full{display:none}#topbar .tb-compact{display:inline-flex}#topbar a{justify-content:center;min-height:30px;font-size:12.2px}}
+html{scroll-padding-top:calc(var(--head-h,130px) + 12px)}
+#mobile-menu{overscroll-behavior:contain}
+#mobile-menu .mm-links{padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+h1,h2{text-wrap:balance}
+@media(hover:none){
+  .btn:active,.nav-call:active{transform:scale(.97)}
+  #mobile-menu .mm-links a:active,#mobile-menu .mm-call:active{background:rgba(255,255,255,.12)}
+  #mobile-menu .mm-call:active{background:var(--red-deep)}
+}
+@media(max-width:640px){
+  #nav{padding:10px 20px}
+  .logo-img{height:42px!important}
+  .foot-col a{padding:9px 0}
+  .foot-base a{display:inline-block;padding:6px 0}
+}
+.hero-inner{padding-top:calc(var(--head-h,120px) + 16px)}
+#hero video{pointer-events:none}
+@media(max-width:340px){.display{font-size:42px}}
+.loc a.tel{padding:8px 0}
+.voice-nav button{width:44px;height:24px;background:none;border-radius:0;position:relative;overflow:visible}
+.voice-nav button::before{content:"";position:absolute;left:0;top:10px;width:100%;height:4px;background:rgba(255,255,255,.18);border-radius:2px}
+.voice-nav button.on::after{content:"";position:absolute;left:0;top:10px;width:100%;height:4px;border-radius:2px;background:var(--red);animation:fill 7s linear forwards;transform-origin:left}
+</style>
 <link rel="icon" href="favicon.ico" sizes="any"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" content="#0E141D">
 <meta property="og:type" content="website"><meta property="og:title" content="Cardiovascular Consultants P.C. — Advanced Heart & Vascular Care in Metro Detroit"><meta property="og:description" content="Advanced, compassionate cardiovascular care for over 30 years. Three Metro Detroit locations. Board-certified cardiologists. Call (586) 698-1200."><meta property="og:image" content="https://cvc-website-smoky.vercel.app/logo.png"><meta property="og:url" content="https://cvc-website-smoky.vercel.app/index.html">
 <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Cardiovascular Consultants P.C. — Advanced Heart & Vascular Care in Metro Detroit"><meta name="twitter:description" content="Advanced, compassionate cardiovascular care for over 30 years. Three Metro Detroit locations. Board-certified cardiologists. Call (586) 698-1200.">
 <link rel="canonical" href="https://cvc-website-smoky.vercel.app/index.html">
 </head>
 <body>
-<div id="topbar" style="position:fixed;top:0;left:0;right:0;z-index:130;background:#0E141D;color:#E7EBF1;font-family:'Inter',system-ui,sans-serif;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;padding:8px 20px;font-size:13.5px;letter-spacing:.01em;border-bottom:1px solid rgba(255,255,255,.08)">
-<a href="tel:5866981200" style="display:inline-flex;align-items:center;gap:7px;color:#E7EBF1;white-space:nowrap"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span><b style="color:#fff;font-weight:600">Rochester Hills</b> <span style="color:#C4CBD6">(586) 698-1200</span></span></a>
-<a href="tel:5866774606" style="display:inline-flex;align-items:center;gap:7px;color:#E7EBF1;white-space:nowrap"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span><b style="color:#fff;font-weight:600">Washington Twp.</b> <span style="color:#C4CBD6">(586) 677-4606</span></span></a>
-<a href="tel:5866981200" style="display:inline-flex;align-items:center;gap:7px;color:#E7EBF1;white-space:nowrap"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span><b style="color:#fff;font-weight:600">Sterling Heights</b> <span style="color:#C4CBD6">(586) 698-1200</span></span></a>
-</div>
-<style>@media(max-width:900px){#topbar{gap:16px;font-size:12.5px}}@media(max-width:640px){#topbar{gap:6px 14px;padding:7px 12px}#topbar a{font-size:12px}}@media(max-width:460px){#topbar{flex-direction:column;gap:4px;align-items:center;padding:8px 12px}#topbar a{font-size:12.5px}}</style>
+
 
 <!-- CURSOR -->
 <div id="cursor"></div>
@@ -309,14 +338,20 @@ footer{background:var(--ink);color:#9AA5B5;padding:72px clamp(20px,4vw,56px) 36p
   <p>CARDIOVASCULAR CONSULTANTS</p>
 </div>
 
-<!-- LIFELINE SCROLL PROGRESS -->
+<!-- NAV -->
+<div id="site-head">
+<div id="topbar">
+<a href="tel:5866981200" class="tb-full"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Rochester Hills</b> <span class="tb-num">(586) 698-1200</span></span></a>
+<a href="tel:5866774606" class="tb-full"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Washington Twp.</b> <span class="tb-num">(586) 677-4606</span></span></a>
+<a href="tel:5866981200" class="tb-full"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Sterling Heights</b> <span class="tb-num">(586) 698-1200</span></span></a>
+<a href="tel:5866981200" class="tb-compact"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Rochester Hills &amp; Sterling Hts.</b> <span class="tb-num">(586) 698-1200</span></span></a>
+<a href="tel:5866774606" class="tb-compact"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Washington Twp.</b> <span class="tb-num">(586) 677-4606</span></span></a>
+</div>
 <div id="lifeline" aria-hidden="true">
   <svg preserveAspectRatio="none" viewBox="0 0 1200 26">
     <path class="trace" pathLength="1000" d="M0 20 H180 l14 -6 14 6 h90 l10 -14 12 20 12 -19 10 13 h130 l12 -7 12 7 h120 l10 -15 12 21 12 -20 10 14 h130 l13 -6 13 6 h90 l10 -14 12 20 12 -19 10 13 H1200"/>
   </svg>
 </div>
-
-<!-- NAV -->
 <nav id="nav" class="on-hero">
   <a href="#hero" class="logo" data-hover><img src="logo.png" alt="Cardiovascular Consultants P.C." class="logo-img" style="height:52px;width:auto;transition:filter .4s"></a>
   <div class="nav-links">
@@ -330,11 +365,12 @@ footer{background:var(--ink);color:#9AA5B5;padding:72px clamp(20px,4vw,56px) 36p
     <a href="fitcollective.html" data-hover style="color:var(--red)">The Fit Collective</a>
   </div>
   <a class="nav-call" href="tel:5866981200" data-hover><span class="dot"></span>(586) 698-1200</a>
-  <button id="menu-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <button id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
 </nav>
+</div>
 
 <!-- MOBILE MENU -->
-<div id="mobile-menu">
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu">
   <div class="mm-head">
     <img src="logo.png" alt="Cardiovascular Consultants P.C.">
     <button class="mm-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
@@ -357,7 +393,7 @@ footer{background:var(--ink);color:#9AA5B5;padding:72px clamp(20px,4vw,56px) 36p
 </div>
 <!-- HERO -->
 <header id="hero">
-  <video autoplay muted loop playsinline src="hero-main.mp4"></video>
+  <video autoplay muted loop playsinline preload="auto" src="hero-main.mp4" aria-hidden="true" tabindex="-1"></video>
   <div class="veil"></div>
   <div class="hero-inner">
     <div class="eyebrow on-dark">Metro Detroit · Est. 30+ Years</div>
@@ -402,7 +438,7 @@ footer{background:var(--ink);color:#9AA5B5;padding:72px clamp(20px,4vw,56px) 36p
   </div>
   <div class="chamber-row" id="chamber-row">
     <div class="chamber active" data-hover>
-      <img class="ch-img" src="prevention.jpg" alt="CVC cardiologist examining a patient">
+      <img class="ch-img" loading="lazy" decoding="async" src="prevention.jpg" alt="CVC cardiologist examining a patient">
       <div class="shade"></div><div class="ch-bar"></div>
       <div class="ch-num">I.</div>
       <div class="ch-body">
@@ -488,17 +524,17 @@ footer{background:var(--ink);color:#9AA5B5;padding:72px clamp(20px,4vw,56px) 36p
     <h2 class="h2 rv rv-d1" style="margin-top:16px">Over a century of<br><em style="font-style:italic;color:var(--red)">combined experience.</em></h2>
   </div>
   <div class="team-grid">
-    <div class="doc rv" data-hover><a href="kazziha-profile.html" style="position:absolute;inset:0;z-index:5" aria-label="View profile"></a><img class="doc-img" src="kazziha.jpg" alt="Dr. Samer Y. Kazziha"><div class="grad"></div><div class="doc-txt"><h3>Samer Y. Kazziha</h3><div class="cred">M.D., F.A.C.C.</div><div class="role">Interventional Cardiology · Chief Medical Director, McLaren Heart & Vascular Institute</div></div></div>
-    <div class="doc rv rv-d1" data-hover><a href="koshy-profile.html" style="position:absolute;inset:0;z-index:5" aria-label="View profile"></a><img class="doc-img" src="koshy.jpg" alt="Dr. Sindhu Koshy"><div class="grad"></div><div class="doc-txt"><h3>Sindhu Koshy</h3><div class="cred">M.D., F.A.C.C.</div><div class="role">Cardiology · Women's Heart Health</div></div></div>
-    <div class="doc rv rv-d2" data-hover><a href="nazzaro-profile.html" style="position:absolute;inset:0;z-index:5" aria-label="View profile"></a><img class="doc-img" src="nazzaro.jpg" alt="Dr. William J. Nazzaro"><div class="grad"></div><div class="doc-txt"><h3>William J. Nazzaro</h3><div class="cred">D.O., F.A.C.C.</div><div class="role">Cardiology</div></div></div>
-    <div class="doc rv" data-hover><a href="abed-profile.html" style="position:absolute;inset:0;z-index:5" aria-label="View profile"></a><img class="doc-img" src="abed.jpg" alt="Dr. Madar Abed"><div class="grad"></div><div class="doc-txt"><h3>Madar Abed</h3><div class="cred">M.D., F.A.C.C.</div><div class="role">Cardiology</div></div></div>
-    <div class="doc rv rv-d1" data-hover><a href="arnautovic-profile.html" style="position:absolute;inset:0;z-index:5" aria-label="View profile"></a><img class="doc-img" src="jelena.jpg" alt="Dr. Jelena Zahirovic-Arnautovic"><div class="grad"></div><div class="doc-txt"><h3>Jelena Zahirovic-Arnautovic</h3><div class="cred">D.O., F.A.C.C.</div><div class="role">Cardiology</div></div></div>
+    <div class="doc rv" data-hover><a href="kazziha-profile.html" style="position:absolute;inset:0;z-index:5" aria-label="View profile"></a><img class="doc-img" loading="lazy" decoding="async" src="kazziha.jpg" alt="Dr. Samer Y. Kazziha"><div class="grad"></div><div class="doc-txt"><h3>Samer Y. Kazziha</h3><div class="cred">M.D., F.A.C.C.</div><div class="role">Interventional Cardiology · Chief Medical Director, McLaren Heart & Vascular Institute</div></div></div>
+    <div class="doc rv rv-d1" data-hover><a href="koshy-profile.html" style="position:absolute;inset:0;z-index:5" aria-label="View profile"></a><img class="doc-img" loading="lazy" decoding="async" src="koshy.jpg" alt="Dr. Sindhu Koshy"><div class="grad"></div><div class="doc-txt"><h3>Sindhu Koshy</h3><div class="cred">M.D., F.A.C.C.</div><div class="role">Cardiology · Women's Heart Health</div></div></div>
+    <div class="doc rv rv-d2" data-hover><a href="nazzaro-profile.html" style="position:absolute;inset:0;z-index:5" aria-label="View profile"></a><img class="doc-img" loading="lazy" decoding="async" src="nazzaro.jpg" alt="Dr. William J. Nazzaro"><div class="grad"></div><div class="doc-txt"><h3>William J. Nazzaro</h3><div class="cred">D.O., F.A.C.C.</div><div class="role">Cardiology</div></div></div>
+    <div class="doc rv" data-hover><a href="abed-profile.html" style="position:absolute;inset:0;z-index:5" aria-label="View profile"></a><img class="doc-img" loading="lazy" decoding="async" src="abed.jpg" alt="Dr. Madar Abed"><div class="grad"></div><div class="doc-txt"><h3>Madar Abed</h3><div class="cred">M.D., F.A.C.C.</div><div class="role">Cardiology</div></div></div>
+    <div class="doc rv rv-d1" data-hover><a href="arnautovic-profile.html" style="position:absolute;inset:0;z-index:5" aria-label="View profile"></a><img class="doc-img" loading="lazy" decoding="async" src="jelena.jpg" alt="Dr. Jelena Zahirovic-Arnautovic"><div class="grad"></div><div class="doc-txt"><h3>Jelena Zahirovic-Arnautovic</h3><div class="cred">D.O., F.A.C.C.</div><div class="role">Cardiology</div></div></div>
   </div>
   <div class="team-sub rv">Advanced Practice Providers</div>
   <div class="team-grid" style="margin-top:0">
-    <div class="doc rv" data-hover><img class="doc-img" src="jones.jpg" alt="Jackie Jones"><div class="grad"></div><div class="doc-txt"><h3>Jackie Jones</h3><div class="cred">MSN, ANP-BC, CEN-CMC</div><div class="role">Adult Nurse Practitioner</div></div></div>
-    <div class="doc rv rv-d1" data-hover><img class="doc-img" src="leone.jpg" alt="Raechel Leone"><div class="grad"></div><div class="doc-txt"><h3>Raechel Leone</h3><div class="cred">PA-C</div><div class="role">Physician Assistant</div></div></div>
-    <div class="doc rv rv-d2" data-hover><img class="doc-img" src="sharp.jpg" alt="Brittany Sharp"><div class="grad"></div><div class="doc-txt"><h3>Brittany Sharp</h3><div class="cred">FNP-C</div><div class="role">Family Nurse Practitioner</div></div></div>
+    <div class="doc rv" data-hover><img class="doc-img" loading="lazy" decoding="async" src="jones.jpg" alt="Jackie Jones"><div class="grad"></div><div class="doc-txt"><h3>Jackie Jones</h3><div class="cred">MSN, ANP-BC, CEN-CMC</div><div class="role">Adult Nurse Practitioner</div></div></div>
+    <div class="doc rv rv-d1" data-hover><img class="doc-img" loading="lazy" decoding="async" src="leone.jpg" alt="Raechel Leone"><div class="grad"></div><div class="doc-txt"><h3>Raechel Leone</h3><div class="cred">PA-C</div><div class="role">Physician Assistant</div></div></div>
+    <div class="doc rv rv-d2" data-hover><img class="doc-img" loading="lazy" decoding="async" src="sharp.jpg" alt="Brittany Sharp"><div class="grad"></div><div class="doc-txt"><h3>Brittany Sharp</h3><div class="cred">FNP-C</div><div class="role">Family Nurse Practitioner</div></div></div>
   </div>
 </section>
 
@@ -625,6 +661,7 @@ footer{background:var(--ink);color:#9AA5B5;padding:72px clamp(20px,4vw,56px) 36p
 (function(){
 "use strict";
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduced){document.querySelectorAll('video[autoplay]').forEach(v=>{v.removeAttribute('autoplay');v.pause();});}
 
 /* ---- Preloader ---- */
 const loader=document.getElementById('loader');
@@ -650,7 +687,7 @@ let lastY=0;
 document.addEventListener('scroll',()=>{
   const y=window.scrollY;
   nav.classList.toggle('scrolled',y>60);
-  nav.classList.toggle('hidden',y>lastY&&y>420&&!menu.classList.contains('open'));
+  document.getElementById('site-head').classList.toggle('hidden',y>lastY&&y>420&&!menu.classList.contains('open'));
   lastY=y;
 },{passive:true});
 
@@ -674,6 +711,9 @@ function activate(ch){
   });
 }
 chambers.forEach(c=>{
+  c.setAttribute('tabindex','0');
+  c.setAttribute('role','button');
+  c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate(c);}});
   c.addEventListener('click',()=>activate(c));
   if(matchMedia('(pointer:fine)').matches){
     c.addEventListener('mouseenter',()=>activate(c));
@@ -689,6 +729,7 @@ const vio=new IntersectionObserver(es=>es.forEach(e=>{
   }else v.pause();
 }),{threshold:.1});
 vids.forEach(v=>vio.observe(v));
+document.addEventListener('touchend',function(){const v=document.querySelector('#hero video');if(v&&v.paused&&!reduced)v.play().catch(()=>{});},{once:true,passive:true});
 
 /* ---- Reveals ---- */
 const io=new IntersectionObserver(es=>es.forEach(e=>{
@@ -738,9 +779,27 @@ if(matchMedia('(pointer:fine)').matches&&!reduced){
 }
 })();
 </script>
+<script>
+(function(){
+"use strict";
+var __head=document.getElementById('site-head');
+if(__head){
+  var __meas=function(){document.documentElement.style.setProperty('--head-h',__head.offsetHeight+'px')};
+  __meas();addEventListener('load',__meas);addEventListener('resize',__meas);
+  if(window.ResizeObserver){new ResizeObserver(__meas).observe(__head);}
+}
+var __mm=document.getElementById('mobile-menu'),__mb=document.getElementById('menu-btn');
+var __mc=__mm?__mm.querySelector('.mm-close'):null;
+if(__mm&&__mb){
+  __mb.addEventListener('click',function(){if(__mc)__mc.focus();});
+  if(__mc)__mc.addEventListener('click',function(){__mb.focus();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&__mm.classList.contains('open')){if(__mc)__mc.click();__mb.focus();}});
+}
+})();
+</script>
 <a href="tel:5866981200" id="float-call" aria-label="Call Cardiovascular Consultants at (586) 698-1200" style="position:fixed;bottom:22px;right:22px;z-index:120;display:inline-flex;align-items:center;gap:10px;background:#C8102E;color:#fff;font-family:'Inter',system-ui,sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em;padding:15px 22px;border-radius:100px;box-shadow:0 8px 30px -6px rgba(200,16,46,.6);transition:transform .3s cubic-bezier(.22,1,.36,1),background .3s">
 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
 <span class="fc-txt">Call Us</span></a>
-<style>#float-call:hover{background:#9A0B22;transform:translateY(-3px)}@media(max-width:600px){#float-call{bottom:16px;right:16px;padding:14px 20px}}@media(prefers-reduced-motion:reduce){#float-call{transition:none}}</style>
+<style>#float-call:hover{background:#9A0B22;transform:translateY(-3px)}#float-call:active{transform:scale(.96)}@media(max-width:600px){#float-call{bottom:calc(16px + env(safe-area-inset-bottom));right:16px;padding:14px 20px}}@media(prefers-reduced-motion:reduce){#float-call{transition:none}}</style>
 </body>
 </html>
